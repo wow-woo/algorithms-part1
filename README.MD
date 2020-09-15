@@ -16,3 +16,8 @@ you can implement quickly, rather than good code.
 
 - lazy approach
 - Just Union to root
+
+## Weighted Quick-union
+
+- smaller tree points to bigger tree
+- shorten route to root
