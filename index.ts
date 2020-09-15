@@ -1,38 +1,48 @@
-class QuickFindUF {
-  id: number[];
+type targets = {
+  a: number;
+  b: number;
+};
 
+class QuickUnionUF {
+  arr: number[];
   constructor(n: number) {
-    this.id = Array(n);
+    this.arr = Array(n);
 
     for (let i = 0; i < n; i++) {
-      this.id[i] = i;
+      this.arr[i] = i;
     }
+    console.log("init", this.arr);
   }
 
-  isConnected(a: number, b: number): void {
-    return console.log(this.id[a] === this.id[b]);
+  root(a: number): number {
+    while (a !== this.arr[a]) {
+      a = this.arr[a];
+    }
+    return a;
   }
 
-  union(a: number, b: number): void {
-    if (this.id[a] !== this.id[b]) {
-      const aid = this.id[a];
+  isConnected(a: number, b: number): boolean {
+    console.log(this.root(a) === this.root(b));
 
-      for (let i = 0; i < this.id.length; i++) {
-        if (this.id[i] === aid) this.id[i] = b;
-      }
-    }
-    console.log(this.id);
+    return this.root(a) === this.root(b);
+  }
+
+  union(p: number, q: number): void {
+    const i = this.root(p);
+    const j = this.root(q);
+
+    this.arr[i] = j;
+
+    return console.log(this.arr);
   }
 }
 
-const obj = new QuickFindUF(5);
-console.log(obj);
+const obj = new QuickUnionUF(5);
 
-obj.isConnected(1, 3);
-obj.isConnected(2, 3);
-obj.isConnected(0, 1);
+// obj.isConnected(1, 3);
+// obj.isConnected(1, 2);
+// obj.isConnected(0, 4);
 
-obj.union(0, 2);
-obj.union(0, 4);
-obj.union(0, 1);
-obj.union(2, 3);
+obj.union(1, 3);
+obj.union(2, 0);
+obj.union(3, 2);
