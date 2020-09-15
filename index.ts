@@ -20,6 +20,7 @@ class QuickUnionUF {
 
   root(a: number): number {
     while (a !== this.arr[a]) {
+      this.arr[a] = this.arr[this.arr[a]];
       a = this.arr[a];
     }
     return a;

@@ -31,3 +31,8 @@ you can implement quickly, rather than good code.
 - log N : maximum depth. // [0]
 - 2 ^ () = n
 - () === log N
+
+## Quick-union with path compression
+
+- flatten route from selected node to root.
+- might as well make all nodes on route to root point to root.
