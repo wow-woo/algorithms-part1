@@ -1,3 +1,10 @@
+# Algorithms, Part 1
+
+Quick doesn't mean efficiency is great.
+you can implement quickly, rather than good code.
+
+<br/>
+
 ## Quick-find
 
 - Eager approach
